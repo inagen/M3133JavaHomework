@@ -18,7 +18,7 @@ public class Md2Html {
 
                 StringBuilder block = new StringBuilder();
                 String line = "";
-                while (line != null && (line = reader.readLine()) != null) {
+                while ((line = reader.readLine()) != null) {
                     while (line != null && !line.equals("")) {
                         block.append(line);
                         block.append('\n');
