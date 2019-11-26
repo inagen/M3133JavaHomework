@@ -4,7 +4,6 @@ import java.util.*;
 
 public class MdParser {
     private String text = null;
-    private Stack<String> tags = new Stack<>();
     private int tagsNumber = 7;
     private String[] mdTags = new String[] { "**", "__", "--", "++", "*", "_", "`" };
     private String[] htmlTags = new String[] { "strong", "strong", "s", "u", "em", "em", "code" };
@@ -73,9 +72,8 @@ public class MdParser {
                 builder.append(ch);
             } else {
                 boolean opened = ((tagPositions.get(tagId).size() - tagCounter[tagId]) % 2 == 0);
-                String tmp = htmlTags[tagId];
-                int len = tag.length();
-                String res = "<" + (opened ? "" : "/") + tmp + ">";
+                int len = mdTags[tagId].length();
+                String res = "<" + (opened ? "" : "/") + htmlTags[tagId] + ">";
                 builder.append(res);
                 i += len - 1;
                 tagCounter[tagId]++;
