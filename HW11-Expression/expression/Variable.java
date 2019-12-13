@@ -1,6 +1,6 @@
 package expression;
 
-public final class Variable implements Expression {
+public final class Variable implements AllExpression {
     String name;
 
     Variable(String name) {
@@ -8,6 +8,10 @@ public final class Variable implements Expression {
     }
 
     public int evaluate(int x) {
+        return x;
+    }
+
+    public double evaluate(double x) {
         return x;
     }
 
@@ -25,5 +29,10 @@ public final class Variable implements Expression {
 
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 }
